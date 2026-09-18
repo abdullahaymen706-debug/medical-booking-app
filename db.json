@@ -1,0 +1,140 @@
+{
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Dr. Ahmed Hassan",
+      "specialty": "Cardiologist",
+      "image": "https://i.pravatar.cc/300?img=18",
+      "description": "Experienced cardiologist specialized in heart health and prevention.",
+      "workingDays": ["Saturday", "Sunday", "Tuesday"],
+      "slots": ["10:00 AM", "12:00 PM", "2:00 PM"]
+    },
+    {
+      "id": "2",
+      "name": "Dr. Mohamed Ali",
+      "specialty": "Dermatologist",
+      "image": "https://i.pravatar.cc/300?img=59",
+      "description": "Dermatology specialist providing care for skin and hair conditions.",
+      "workingDays": ["Sunday", "Monday", "Wednesday"],
+      "slots": ["11:00 AM", "1:00 PM", "4:00 PM"]
+    },
+    {
+      "id": "3",
+      "name": "Dr. Omar Khaled",
+      "specialty": "Dentist",
+      "image": "https://i.pravatar.cc/300?img=60",
+      "description": "Dentist focused on preventive care, cleaning and general dentistry.",
+      "workingDays": ["Saturday", "Monday", "Thursday"],
+      "slots": ["9:00 AM", "1:00 PM", "5:00 PM"]
+    },
+    {
+      "id": "4",
+      "name": "Dr. Mahmoud Ibrahim",
+      "specialty": "Pediatrician",
+      "image": "https://i.pravatar.cc/300?img=8",
+      "description": "Pediatrician providing friendly healthcare and medical care for children.",
+      "workingDays": ["Sunday", "Tuesday", "Thursday"],
+      "slots": ["10:00 AM", "12:00 PM", "3:00 PM"]
+    },
+    {
+      "id": "5",
+      "name": "Dr. Youssef Adel",
+      "specialty": "Neurologist",
+      "image": "https://i.pravatar.cc/300?img=11",
+      "description": "Neurologist specializing in the diagnosis and treatment of nervous system conditions.",
+      "workingDays": ["Saturday", "Monday", "Wednesday"],
+      "slots": ["10:00 AM", "1:00 PM", "3:00 PM"]
+    },
+    {
+      "id": "6",
+      "name": "Dr. Karim Hassan",
+      "specialty": "Orthopedic",
+      "image": "https://i.pravatar.cc/300?img=12",
+      "description": "Orthopedic specialist focused on bones, joints and musculoskeletal conditions.",
+      "workingDays": ["Sunday", "Tuesday", "Thursday"],
+      "slots": ["9:00 AM", "12:00 PM", "4:00 PM"]
+    },
+    {
+      "id": "7",
+      "name": "Dr. Mostafa Samir",
+      "specialty": "Ophthalmologist",
+      "image": "https://i.pravatar.cc/300?img=13",
+      "description": "Eye specialist providing comprehensive vision and eye health services.",
+      "workingDays": ["Saturday", "Monday", "Thursday"],
+      "slots": ["10:00 AM", "2:00 PM", "5:00 PM"]
+    },
+    {
+      "id": "8",
+      "name": "Dr. Hossam Tarek",
+      "specialty": "ENT Specialist",
+      "image": "https://i.pravatar.cc/300?img=15",
+      "description": "ENT specialist treating common ear, nose and throat conditions.",
+      "workingDays": ["Sunday", "Tuesday", "Wednesday"],
+      "slots": ["11:00 AM", "1:00 PM", "4:00 PM"]
+    },
+    {
+      "id": "9",
+      "name": "Dr. Amr Fathy",
+      "specialty": "General Physician",
+      "image": "https://i.pravatar.cc/300?img=17",
+      "description": "General physician providing primary healthcare and routine medical consultations.",
+      "workingDays": ["Saturday", "Monday", "Wednesday"],
+      "slots": ["9:00 AM", "12:00 PM", "3:00 PM"]
+    },
+    {
+      "id": "10",
+      "name": "Dr. Tamer Nabil",
+      "specialty": "Gastroenterologist",
+      "image": "https://i.pravatar.cc/300?img=50",
+      "description": "Gastroenterology specialist focused on digestive system health and treatment.",
+      "workingDays": ["Sunday", "Tuesday", "Thursday"],
+      "slots": ["10:00 AM", "1:00 PM", "5:00 PM"]
+    },
+    {
+      "id": "11",
+      "name": "Dr. Ahmed Mostafa",
+      "specialty": "Urologist",
+      "image": "https://i.pravatar.cc/300?img=51",
+      "description": "Urologist providing diagnosis and treatment for urinary health conditions.",
+      "workingDays": ["Saturday", "Monday", "Thursday"],
+      "slots": ["11:00 AM", "2:00 PM", "4:00 PM"]
+    },
+    {
+      "id": "12",
+      "name": "Dr. Sherif Adel",
+      "specialty": "Psychiatrist",
+      "image": "https://i.pravatar.cc/300?img=52",
+      "description": "Psychiatrist providing professional mental health consultations and support.",
+      "workingDays": ["Sunday", "Monday", "Wednesday"],
+      "slots": ["10:00 AM", "1:00 PM", "3:00 PM"]
+    },
+    {
+      "id": "13",
+      "name": "Dr. Walid Hassan",
+      "specialty": "Pulmonologist",
+      "image": "https://i.pravatar.cc/300?img=63",
+      "description": "Pulmonologist specializing in respiratory health and lung conditions.",
+      "workingDays": ["Saturday", "Tuesday", "Thursday"],
+      "slots": ["9:00 AM", "12:00 PM", "4:00 PM"]
+    },
+    {
+      "id": "14",
+      "name": "Dr. Ehab Mahmoud",
+      "specialty": "Endocrinologist",
+      "image": "https://i.pravatar.cc/300?img=56",
+      "description": "Endocrinologist specializing in hormones, metabolism and related conditions.",
+      "workingDays": ["Sunday", "Monday", "Thursday"],
+      "slots": ["10:00 AM", "2:00 PM", "5:00 PM"]
+    },
+    {
+      "id": "15",
+      "name": "Dr. Khaled Sameh",
+      "specialty": "General Surgeon",
+      "image": "https://i.pravatar.cc/300?img=57",
+      "description": "General surgeon providing consultations for a variety of surgical conditions.",
+      "workingDays": ["Saturday", "Tuesday", "Wednesday"],
+      "slots": ["11:00 AM", "1:00 PM", "4:00 PM"]
+    }
+  ],
+  "appointments": []
+}
