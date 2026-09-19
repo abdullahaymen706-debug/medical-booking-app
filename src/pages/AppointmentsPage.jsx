@@ -21,6 +21,7 @@ function AppointmentsPage() {
       setError("");
 
       const response = await getAppointments();
+
       setAppointments(response.data);
     } catch (error) {
       console.error(error);
@@ -36,9 +37,10 @@ function AppointmentsPage() {
 
   const startEdit = (appointment) => {
     setMessage("");
+
     setEditingId(appointment.id);
-    setEditDate(appointment.date);
-    setEditTime(appointment.time);
+    setEditDate(appointment.data.date);
+    setEditTime(appointment.data.time);
   };
 
   const cancelEdit = () => {
@@ -57,7 +59,7 @@ function AppointmentsPage() {
       setMessage("");
 
       await updateAppointment(appointment.id, {
-        ...appointment,
+        ...appointment.data,
         date: editDate,
         time: editTime,
       });

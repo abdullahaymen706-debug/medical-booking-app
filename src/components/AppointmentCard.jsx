@@ -12,15 +12,17 @@ function AppointmentCard({
 }) {
   const isEditing = editingId === appointment.id;
 
+  const data = appointment.data;
+
   return (
     <article className="rounded-2xl bg-white p-6 shadow-md transition hover:shadow-lg dark:bg-gray-800">
       <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-        {appointment.doctorName}
+        {data.doctorName}
       </h2>
 
       <p className="mt-3 text-gray-600 dark:text-gray-300">
         <strong className="text-gray-900 dark:text-white">Patient:</strong>{" "}
-        {appointment.patientName}
+        {data.patientName}
       </p>
 
       {isEditing ? (
@@ -82,18 +84,18 @@ function AppointmentCard({
           <div className="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
             <p>
               <strong className="text-gray-900 dark:text-white">Date:</strong>{" "}
-              {appointment.date}
+              {data.date}
             </p>
 
             <p>
               <strong className="text-gray-900 dark:text-white">Time:</strong>{" "}
-              {appointment.time}
+              {data.time}
             </p>
 
-            {appointment.note && (
+            {data.note && (
               <p>
                 <strong className="text-gray-900 dark:text-white">Note:</strong>{" "}
-                {appointment.note}
+                {data.note}
               </p>
             )}
           </div>
