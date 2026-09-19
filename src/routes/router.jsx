@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import FavoritesPage from "../pages/FavoritesPage";
 import App from "../App";
 import DoctorsPage from "../pages/DoctorsPage";
@@ -10,7 +10,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 function Router() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Navigate to="/doctors" replace />} />
@@ -23,7 +23,7 @@ function Router() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
