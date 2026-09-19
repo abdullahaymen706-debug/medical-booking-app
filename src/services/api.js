@@ -42,7 +42,7 @@ export const getAppointments = async () => {
 export const createAppointment = async (data) => {
   const { data: appointment, error } = await supabase
     .from("appointments")
-    .insert([data])
+    .insert([{ data }])
     .select()
     .single();
 
@@ -50,7 +50,6 @@ export const createAppointment = async (data) => {
 
   return { data: appointment };
 };
-
 export const updateAppointment = async (id, data) => {
   const { data: appointment, error } = await supabase
     .from("appointments")
