@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = "https://rhojtlpetfpkwpanblbq.supabase.co";
+const supabaseKey = "sb_publishable_QpDTNNzVpBIVLYuBd2dC1w_CxMYLdei";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -39,11 +39,10 @@ export const getAppointments = async () => {
   return { data };
 };
 
-// Create appointment
 export const createAppointment = async (data) => {
   const { data: appointment, error } = await supabase
     .from("appointments")
-    .insert([{ data }])
+    .insert([data])
     .select()
     .single();
 
@@ -52,11 +51,10 @@ export const createAppointment = async (data) => {
   return { data: appointment };
 };
 
-// Update appointment
 export const updateAppointment = async (id, data) => {
   const { data: appointment, error } = await supabase
     .from("appointments")
-    .update({ data })
+    .update(data)
     .eq("id", id)
     .select()
     .single();
@@ -65,7 +63,6 @@ export const updateAppointment = async (id, data) => {
 
   return { data: appointment };
 };
-
 // Delete appointment
 export const deleteAppointment = async (id) => {
   const { error } = await supabase.from("appointments").delete().eq("id", id);
