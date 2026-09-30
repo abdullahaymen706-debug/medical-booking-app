@@ -1,75 +1,86 @@
-import { createClient } from "@supabase/supabase-js";
+// src/services/api.js
 
-const supabaseUrl = "https://rhojtlpetfpkwpanblbq.supabase.co";
-const supabaseKey = "sb_publishable_QpDTNNzVpBIVLYuBd2dC1w_CxMYLdei";
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-// Get all doctors
+// جلب جميع الأطباء من db.json المباشر داخل public
 export const getDoctors = async () => {
-  const { data, error } = await supabase.from("doctors").select("*");
-
-  if (error) throw error;
-
-  return { data };
+  try {
+    const response = await fetch("/db.json");
+    if (!response.ok) throw new Error("Failed to fetch doctors");
+    const data = await response.json();
+    return { data: data.doctors };
+  } catch (error) {
+    console.error("Error fetching doctors:", error);
+    throw error;
+  }
 };
 
-// Get one doctor
+// جلب طبيب واحد بحسب الـ ID
 export const getDoctor = async (id) => {
-  const { data, error } = await supabase
-    .from("doctors")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) throw error;
-
-  return { data };
+  try {
+    const response = await fetch("/db.json");
+    if (!response.ok) throw new Error("Failed to fetch doctor");
+    const data = await response.json();
+    const doctor = data.doctors.find((d) => String(d.id) === String(id));
+    
+    if (!doctor) throw new Error("Doctor not found");
+    return { data: doctor };
+  } catch (error) {
+    console.error("Error fetching doctor:", error);
+    throw error;
+  }
 };
 
-// Get all appointments
+// --- إدارة المواعيد (Appointments) باستخدام localStorage لحفظ الحجوزات ---
+
+const getStoredAppointments = () => {
+  const stored = localStorage.getItem("appointments");
+  return stored ? JSON.parse(stored) : [];
+};
+
+const saveAppointments = (appointments) => {
+  localStorage.setItem("appointments", JSON.stringify(appointments));
+};
+
+// جلب جميع المواعيد
 export const getAppointments = async () => {
-  const { data, error } = await supabase
-    .from("appointments")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) throw error;
-
-  return { data };
+  const appointments = getStoredAppointments();
+  return { data: appointments };
 };
 
-export const createAppointment = async (data) => {
-  const { data: appointment, error } = await supabase
-    .from("appointments")
-    .insert([{ data }])
-    .select()
-    .single();
-
-  if (error) throw error;
-
-  return { data: appointment };
+// إنشاء موعد جديد
+export const createAppointment = async (appointmentData) => {
+  const appointments = getStoredAppointments();
+  const newAppointment = {
+    id: Date.now().toString(),
+    created_at: new Date().toISOString(),
+    ...appointmentData,
+  };
+  
+  const updated = [newAppointment, ...appointments];
+  saveAppointments(updated);
+  return { data: newAppointment };
 };
 
-export const updateAppointment = async (id, data) => {
-  const { data: appointment, error } = await supabase
-    .from("appointments")
-    .update({ data })
-    .eq("id", id)
-    .select()
-    .single();
+// تعديل موعد
+export const updateAppointment = async (id, appointmentData) => {
+  const appointments = getStoredAppointments();
+  let updatedAppointment = null;
 
-  if (error) throw error;
+  const updated = appointments.map((app) => {
+    if (String(app.id) === String(id)) {
+      updatedAppointment = { ...app, ...appointmentData };
+      return updatedAppointment;
+    }
+    return app;
+  });
 
-  return { data: appointment };
+  saveAppointments(updated);
+  return { data: updatedAppointment };
 };
-// Delete appointment
+
+// حذف موعد
 export const deleteAppointment = async (id) => {
-  const { error } = await supabase.from("appointments").delete().eq("id", id);
-
-  if (error) throw error;
-
+  const appointments = getStoredAppointments();
+  const filtered = appointments.filter((app) => String(app.id) !== String(id));
+  saveAppointments(filtered);
   return { data: null };
 };
-
-export default supabase;
