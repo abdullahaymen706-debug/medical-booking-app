@@ -1,10 +1,12 @@
 // src/services/api.js
-import dbData from "../data/db.json";
 
-// جلب جميع الأطباء مباشرة
+// جلب جميع الأطباء من db.json في Root/Public
 export const getDoctors = async () => {
   try {
-    return { data: dbData.doctors || [] };
+    const response = await fetch("/db.json");
+    if (!response.ok) throw new Error("Failed to fetch doctors");
+    const data = await response.json();
+    return { data: data.doctors || [] };
   } catch (error) {
     console.error("Error fetching doctors:", error);
     throw error;
@@ -14,7 +16,11 @@ export const getDoctors = async () => {
 // جلب طبيب واحد بحسب الـ ID
 export const getDoctor = async (id) => {
   try {
-    const doctor = dbData.doctors.find((d) => String(d.id) === String(id));
+    const response = await fetch("/db.json");
+    if (!response.ok) throw new Error("Failed to fetch doctor");
+    const data = await response.json();
+    const doctor = (data.doctors || []).find((d) => String(d.id) === String(id));
+
     if (!doctor) throw new Error("Doctor not found");
     return { data: doctor };
   } catch (error) {
