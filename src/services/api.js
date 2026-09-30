@@ -1,12 +1,10 @@
 // src/services/api.js
+import dbData from "../data/db.json";
 
-// جلب جميع الأطباء من db.json المباشر داخل public
+// جلب جميع الأطباء مباشرة
 export const getDoctors = async () => {
   try {
-    const response = await fetch("/db.json");
-    if (!response.ok) throw new Error("Failed to fetch doctors");
-    const data = await response.json();
-    return { data: data.doctors };
+    return { data: dbData.doctors || [] };
   } catch (error) {
     console.error("Error fetching doctors:", error);
     throw error;
@@ -16,11 +14,7 @@ export const getDoctors = async () => {
 // جلب طبيب واحد بحسب الـ ID
 export const getDoctor = async (id) => {
   try {
-    const response = await fetch("/db.json");
-    if (!response.ok) throw new Error("Failed to fetch doctor");
-    const data = await response.json();
-    const doctor = data.doctors.find((d) => String(d.id) === String(id));
-    
+    const doctor = dbData.doctors.find((d) => String(d.id) === String(id));
     if (!doctor) throw new Error("Doctor not found");
     return { data: doctor };
   } catch (error) {
@@ -29,7 +23,7 @@ export const getDoctor = async (id) => {
   }
 };
 
-// --- إدارة المواعيد (Appointments) باستخدام localStorage لحفظ الحجوزات ---
+// --- إدارة المواعيد (Appointments) باستخدام localStorage ---
 
 const getStoredAppointments = () => {
   const stored = localStorage.getItem("appointments");
@@ -54,7 +48,7 @@ export const createAppointment = async (appointmentData) => {
     created_at: new Date().toISOString(),
     ...appointmentData,
   };
-  
+
   const updated = [newAppointment, ...appointments];
   saveAppointments(updated);
   return { data: newAppointment };
