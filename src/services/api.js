@@ -1,6 +1,6 @@
 // src/services/api.js
 
-// جلب جميع الأطباء من db.json في Root/Public
+// جلب جميع الأطباء من db.json المباشر
 export const getDoctors = async () => {
   try {
     const response = await fetch("/db.json");
@@ -32,12 +32,15 @@ export const getDoctor = async (id) => {
 // --- إدارة المواعيد (Appointments) باستخدام localStorage ---
 
 const getStoredAppointments = () => {
+  if (typeof window === "undefined") return [];
   const stored = localStorage.getItem("appointments");
   return stored ? JSON.parse(stored) : [];
 };
 
 const saveAppointments = (appointments) => {
-  localStorage.setItem("appointments", JSON.stringify(appointments));
+  if (typeof window !== "undefined") {
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+  }
 };
 
 // جلب جميع المواعيد
