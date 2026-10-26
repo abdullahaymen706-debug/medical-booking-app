@@ -12,7 +12,7 @@ function AppointmentCard({
 }) {
   const isEditing = editingId === appointment.id;
 
-  const data = appointment.data;
+const data = appointment.data ?? appointment;
 
   return (
     <article className="rounded-2xl bg-white p-6 shadow-md transition hover:shadow-lg dark:bg-gray-800">
